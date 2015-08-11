@@ -21,6 +21,7 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
+    @tasks = @list.tasks
   end
 
   def edit
@@ -39,6 +40,9 @@ class ListsController < ApplicationController
 
   def destroy
     list = List.find(params[:id])
+    list.tasks.each do |task|
+      task.destroy
+    end
     list.destroy
     redirect_to lists_path
   end

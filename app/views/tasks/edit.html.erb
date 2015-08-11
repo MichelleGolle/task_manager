@@ -1,0 +1,14 @@
+<%= bootstrap_form_for(@task, url: list_task_path(@task.list_id ,@task.id), method: :patch, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-6") do |f| %>
+
+  <%= f.text_field :title %>
+  <%= f.text_field :notes %>
+  <%= f.form_group do %>
+    <%= f.check_box :completed %>
+  <% end %>
+  <%= f.date_field :start_date %>
+  <%= f.date_field :due_date %>
+
+  <%= f.form_group do %>
+    <%= f.submit "Submit"%>
+  <% end %>
+<% end %>
