@@ -1,0 +1,8 @@
+<%= bootstrap_form_for(@list, layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-6") do |f| %>
+
+  <%= f.text_field :title %>
+  <%= f.text_field :description %>
+  <%= f.form_group do %>
+    <%= f.submit "Submit" %>
+  <% end %>
+<% end %>

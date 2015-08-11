@@ -1,0 +1,10 @@
+<div class="user-header"><h1>Current Task Lists:</h1></div>
+<div class="newlist"><%= link_to "Create new list", new_list_path %></div><br><br>
+
+<ul class="list-group">
+<% @lists.each do |list| %>
+<li class="list-group-item"><%= link_to "#{list.title}", list_path(list) %>
+<%= list.description %>
+<%= link_to "Edit", edit_list_path(list) %>
+<% end %>
+</ul>
