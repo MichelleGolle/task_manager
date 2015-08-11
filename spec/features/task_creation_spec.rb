@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Tasks" do
-    xit "can be added to a list" do
+    it "can be added to a list" do
       visit root_path
       click_link_or_button "Create a new list"
       fill_in "Title", with: "Homework"
@@ -12,9 +12,10 @@ RSpec.describe "Tasks" do
       click_link_or_button "Add Task"
 
       fill_in "Title", with: "Blogger"
-      fill_in "Due date", with: "09/15/2015"
-      fill_in "Start date", with: "08/11/2015"
+      fill_in "Due date",  with: Date.new(2015, 9, 30)
+      fill_in "Start date",  with: Date.new(2015, 8, 11)
       click_link_or_button "Submit"
+      # save_and_open_page
       expect(page).to have_content("Blogger")
     end
 
