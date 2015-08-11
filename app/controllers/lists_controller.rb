@@ -22,6 +22,8 @@ class ListsController < ApplicationController
   def show
     @list = List.find(params[:id])
     @tasks = @list.tasks.where(completed: false).where("start_date < ?", Date.today)
+    @complete_tasks = @list.tasks.where(completed: true)
+    @future_tasks = @list.tasks.where(completed: false).where("start_date > ?", Date.today)
   end
 
   def edit

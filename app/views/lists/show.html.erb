@@ -16,7 +16,6 @@
     </tr>
   </thead>
   <tbody class="tasks">
-
     <tr class="task"><% @tasks.each do |task| %>
       <td class="task-title"><%= task.title %></td>
       <td><%= task.notes %></td>
@@ -24,9 +23,53 @@
       <td><%= task.due_date %></td>
       <td><%= link_to "Edit", edit_list_task_path(id: task.id, list_id: @list.id) %></td></tr>
     <% end %>
+  </tbody>
+</table>
+</div>
 
+<button type="button" class="btn btn-default" aria-label="Left Align" id="future-button">"View Future Tasks"</button>
+<button type="button" class="btn btn-default" aria-label="Left Align" id="completed-button">"View Completed Tasks"</button>
 
+<div id="future-task-table" style="display: none">
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Due Date</th>
+      <th>Tags</th>
+    </tr>
+  </thead>
+  <tbody class="tasks">
+    <tr class="task"><% @future_tasks.each do |task| %>
+      <td class="task-title"><%= task.title %></td>
+      <td><%= task.notes %></td>
+      <td><%= task.start_date %></td>
+      <td><%= task.due_date %></td>
+      <td><%= link_to "Edit", edit_list_task_path(id: task.id, list_id: @list.id) %></td></tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
 
+<div id="completed-task-table" style="display: none">
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Due Date</th>
+      <th>Tags</th>
+    </tr>
+  </thead>
+  <tbody class="tasks">
+    <tr class="task"><% @complete_tasks.each do |task| %>
+      <td class="task-title"><%= task.title %></td>
+      <td><%= task.notes %></td>
+      <td><%= task.start_date %></td>
+      <td><%= task.due_date %></td>
+      <td><%= link_to "Edit", edit_list_task_path(id: task.id, list_id: @list.id) %></td></tr>
+    <% end %>
   </tbody>
 </table>
 </div>
