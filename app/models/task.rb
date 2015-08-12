@@ -7,6 +7,10 @@ class Task < ActiveRecord::Base
   validate :start_date_cannot_be_in_the_past,
            :due_date_cannot_be_in_the_past
 
+  scope :current, -> { where(completed: false).where("start_date <= ?", Date.today) }
+  scope :complete, -> { where(completed: true) }
+  scope :future, -> { where(completed: false).where("start_date > ?", Date.today) }
+
   def start_date_cannot_be_in_the_past
     errors.add(:start_date, "can't be in the past") if
       !start_date.blank? && start_date < Date.today

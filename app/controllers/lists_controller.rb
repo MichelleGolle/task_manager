@@ -22,9 +22,9 @@ class ListsController < ApplicationController
   def show
     @tags = Tag.all
     @list = List.find(params[:id])
-    @tasks = @list.tasks.where(completed: false).where("start_date <= ?", Date.today)
-    @complete_tasks = @list.tasks.where(completed: true)
-    @future_tasks = @list.tasks.where(completed: false).where("start_date > ?", Date.today)
+    @tasks = @list.tasks.current
+    @complete_tasks = @list.tasks.complete
+    @future_tasks = @list.tasks.future
   end
 
   def edit
