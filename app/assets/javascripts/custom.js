@@ -35,4 +35,17 @@ $(document).ready(function(){
   }
   function getCellValue(row, index){ return $(row).children('td').eq(index).html() }
 
+
+  $('#filter').click(function() {
+    var filter = $(this).data("rel")
+    $(".task-tags").each(function(){
+      if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+            $(this.parentElement).fadeOut();
+        } else {
+            $(this).show();
+        }
+    });
+  });
+
+
 });

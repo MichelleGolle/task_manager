@@ -1,5 +1,7 @@
 class Task < ActiveRecord::Base
   belongs_to :list
+  has_many  :task_tags
+  has_many  :tags, through: :task_tags
   validates :title, presence: true
   validates :start_date, presence: true
   validate :start_date_cannot_be_in_the_past,

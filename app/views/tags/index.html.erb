@@ -1,0 +1,14 @@
+<%= link_to "Create New Tag", new_tag_path %>
+
+<h3>Your tags:</h3>
+<% @tags.each do |tag| %>
+  <%= tag.title %>
+<% end %>
+
+<% @tags.each do |tag| %>
+  <h3><%= tag.title %></h3><br>
+  <% tag.tasks.each do |task| %>
+    <b>Task: </b><%= task.title %>
+    <b>List: </b><%= task.list.title %><br>
+  <% end %>
+<% end %><br><br>

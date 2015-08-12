@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   resources :lists do
     resources :tasks
   end
+
+  resources :tags, only: [:index, :new, :create]
+
 end

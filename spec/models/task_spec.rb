@@ -4,6 +4,7 @@ RSpec.describe Task, type: :model do
   it {should validate_presence_of :title}
   it {should validate_presence_of :start_date}
   it {should belong_to :list}
+  it {should have_many :tags}
 
   it 'does not allow the user to create a task with a start_date before the current date' do
     task = Task.create(title: 'Groceries', notes: 'bananas', start_date: Date.new(2015, 01, 31))

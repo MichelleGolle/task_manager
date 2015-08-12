@@ -7,7 +7,7 @@
   <% end %>
   <%= f.date_field :start_date %>
   <%= f.date_field :due_date %>
-
+  <%= f.collection_check_boxes(:tag_ids, @tags, :id, :title) %>
   <%= f.form_group do %>
     <%= f.submit "Submit"%>
   <% end %>

@@ -1,4 +1,4 @@
 Task Manager
 
-* This application is the final assessment for Turing School of Software and Design. It's full description can be seen here: https://gist.github.com/stevekinney/f477463136d8a4d954ea
+* This application is a 24 hour final assessment for Turing School of Software and Design. It's full description can be seen here: https://gist.github.com/stevekinney/f477463136d8a4d954ea
 * Visit the app at https://turing-task-manager.herokuapp.com/

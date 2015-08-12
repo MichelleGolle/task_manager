@@ -15,7 +15,6 @@ RSpec.describe "Tasks" do
       fill_in "Due date",  with: Date.new(2015, 9, 30)
       fill_in "Start date",  with: Date.new(2015, 8, 11)
       click_link_or_button "Submit"
-      # save_and_open_page
       expect(page).to have_content("Blogger")
     end
 
