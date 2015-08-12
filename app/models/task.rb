@@ -17,4 +17,12 @@ class Task < ActiveRecord::Base
       !due_date.blank? && due_date < Date.today
   end
 
+  def update_status
+    if complete?
+      update(status: 'incomplete')
+    else
+      update(status: 'complete')
+    end
+  end
+
 end

@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  respond_to :json
 
   def index
     list = List.find(params[:list_id])
@@ -48,6 +49,16 @@ class TasksController < ApplicationController
     end
   end
 
+  def change_status
+    task = Task.find(params[:task_id])
+    task.completed = params[:completed]
+    if task.save
+      respond_with Task.find(params[:task_id])
+    else
+      respond_with({errors => task.errors}, :status => 422, :location => list_path(task.list_id))
+    end
+  end
+
   private
 
   def task_params
@@ -56,6 +67,7 @@ class TasksController < ApplicationController
                                  :notes,
                                  :due_date,
                                  :start_date,
+                                 :list_id
                                  )
   end
 

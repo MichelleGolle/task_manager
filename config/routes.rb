@@ -7,4 +7,7 @@ Rails.application.routes.draw do
 
   resources :tags, only: [:index, :new, :create]
 
+  put '/change', to: 'tasks#change_status'
+
+
 end

@@ -41,7 +41,7 @@
           <%= tag.title %>
           <% end %>
       </td>
-      <td><%= check_box_tag("status", "1", check_box_checked?(task), id: "completer", data: { 'list-id' => task.list.id, 'task-id' => task.id }) %> </td>
+      <td><a href="#" class="task-status" data-id=<%=task.id %>><%= task.completed %></a></td>
       <td><%= link_to "Edit", edit_list_task_path(id: task.id, list_id: @list.id) %></td></tr>
     <% end %>
   </tbody>
@@ -74,7 +74,7 @@
             <%= tag.title %>
             <% end %>
         </td>
-        <td><input type="checkbox"></td>
+        <td><a href="#" class="task-status" data-id=<%=task.id %>><%= task.completed %></a></td>
         <td><%= link_to "Edit", edit_list_task_path(id: task.id, list_id: @list.id) %></td></tr>
       <% end %>
     </tbody>
@@ -104,7 +104,7 @@
             <%= tag.title %>
             <% end %>
         </td>
-        <td><input type="checkbox" checked="checked"></td>
+        <td><a href="#" class="task-status" data-id=<%=task.id %>><%= task.completed %></a></td>
         <td><%= link_to "Edit", edit_list_task_path(id: task.id, list_id: @list.id) %></td></tr>
       <% end %>
     </tbody>
