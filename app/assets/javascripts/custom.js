@@ -93,4 +93,42 @@ $(document).ready(function(){
     }
   });
 
+
+
+  // $("#completer").on('click', function(){
+  // if (this.checked) {
+  //   var completed = true
+  // } else {
+  //   var completed = false
+  // }
+  // var checkBox = $(this);
+  // $.ajax({
+  //   type:'PUT',
+  //   url: '/lists/'+ checkBox.data('list-id') + '/tasks/' + checkBox.data('task-id'),
+  //   data: { task: { completed: true, title: checkBox.data('task-title') } }
+  // })
+  // //.done(function(){
+  //   // move task to completed table or incompleted table based on completed true or false
+  // //})
+  //
+  // })
+
+  $("#completer").on('click', function(){
+  if (this.checked) {
+    var completed = true
+  } else {
+    var completed = false
+  }
+  var checkBox = $(this);
+  $.ajax({
+    type:'PUT',
+    url: '/lists/'+ checkBox.data('list-id') + '/tasks/' + checkBox.data('task-id'),
+    data: { task: { completed: true, title: checkBox.data('task-title') } }
+  })
+  //.done(function(){
+    // move task to completed table or incompleted table based on completed true or false
+  //})
+
+  })
+
 });

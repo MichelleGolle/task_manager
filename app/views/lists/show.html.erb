@@ -12,13 +12,10 @@
 
 <div id="task-tags-filter">
   Filter By:
-
-  <button type="button" class="btn btn-default tag-button" aria-label="Left Align">sports</button>
-  <button type="button" class="btn btn-default tag-button" aria-label="Left Align">household</button>
-  <button type="button" class="btn btn-default tag-button" aria-label="Left Align">pets</button>
-  <button type="button" class="btn btn-default tag-button" aria-label="Left Align">all</button>
+  <% @tags.each do |tag| %>
+    <button type="button" class="btn btn-default tag-button" aria-label="Left Align"><%= tag.title %></button>
+  <% end %>
 </div>
-
 
 <div id="task-table">
 <table class="table table-bordered">
@@ -43,7 +40,7 @@
           <%= tag.title %>
           <% end %>
       </td>
-      <td><input id="completer" type="checkbox"></td>
+      <td><%= check_box_tag("status", "1", check_box_checked?(task), id: "completer", data: { 'list-id' => task.list.id, 'task-id' => task.id }) %> </td>
       <td><%= link_to "Edit", edit_list_task_path(id: task.id, list_id: @list.id) %></td></tr>
     <% end %>
   </tbody>
