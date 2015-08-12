@@ -12,6 +12,7 @@
 
 <div id="task-tags-filter">
   Filter By:
+  <button type="button" class="btn btn-default tag-button" aria-label="Left Align">all</button>
   <% @tags.each do |tag| %>
     <button type="button" class="btn btn-default tag-button" aria-label="Left Align"><%= tag.title %></button>
   <% end %>
@@ -58,6 +59,7 @@
         <th>Notes</th>
         <th>Start Date</th>
         <th>Due Date</th>
+        <th>Tags</th>
         <th>Complete?</th>
         <th>Edit</th>
       </tr>
@@ -68,6 +70,10 @@
         <td><%= task.notes %></td>
         <td><%= task.start_date %></td>
         <td><%= task.due_date %></td>
+        <td class="task-tags"><% task.tags.each do |tag| %>
+            <%= tag.title %>
+            <% end %>
+        </td>
         <td><input type="checkbox"></td>
         <td><%= link_to "Edit", edit_list_task_path(id: task.id, list_id: @list.id) %></td></tr>
       <% end %>
@@ -83,6 +89,7 @@
         <th>Notes</th>
         <th>Start Date</th>
         <th>Due Date</th>
+        <th>Tags</th>
         <th>Complete?</th>
         <th>Edit</th>
       </tr>
@@ -93,6 +100,10 @@
         <td><%= task.notes %></td>
         <td><%= task.start_date %></td>
         <td><%= task.due_date %></td>
+        <td class="task-tags"><% task.tags.each do |tag| %>
+            <%= tag.title %>
+            <% end %>
+        </td>
         <td><input type="checkbox" checked="checked"></td>
         <td><%= link_to "Edit", edit_list_task_path(id: task.id, list_id: @list.id) %></td></tr>
       <% end %>

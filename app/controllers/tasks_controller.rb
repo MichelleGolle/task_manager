@@ -11,8 +11,8 @@ class TasksController < ApplicationController
   end
 
   def new
-    @list = List.find(params[:list_id])
     @tags = Tag.all
+    @list = List.find(params[:list_id])
     @task = Task.new
   end
 
@@ -24,13 +24,14 @@ class TasksController < ApplicationController
       flash[:notice] = "Task successfully created"
       redirect_to list_path(list)
     else
+      @tags = Tag.all
         render :new
     end
   end
 
   def edit
-    list = List.find(params[:list_id])
     @tags = Tag.all
+    list = List.find(params[:list_id])
     @task = list.tasks.find(params[:id])
   end
 
@@ -41,6 +42,7 @@ class TasksController < ApplicationController
       assign_tags
       redirect_to list_path(list)
     else
+      @tags = Tag.all
       flash[:notice] = "Invalid entry"
       render :edit
     end
@@ -61,8 +63,8 @@ class TasksController < ApplicationController
     tags = params[:task][:tag_ids].reject(&:empty?)
     tags.each do |id|
       @task.tags << Tag.find(id) unless @task.tags.include?(Tag.find(id))
-    # end
     end
   end
+
 
 end
